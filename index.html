@@ -2,7 +2,13 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="星座人格聊天指南">
+<meta name="theme-color" content="#faf8f6">
+<meta name="description" content="用星座和MBTI，更好地理解她。查询12星座和16种MBTI人格的特点、开场白话术、相处聊天建议。">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
 <title>星座人格聊天指南</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1071,14 +1077,14 @@ const PAIRING_LEVELS = {
 
 const TIPS_DATA = {
   principles: [
-    { quote:"真诚是最高级的情商。星座和MBTI只是帮你理解她，不是帮你套路她。", source:"聊天第一定律", tag:"核心" },
-    { quote:"聊天不是展示你自己有多厉害，而是让她觉得——和你聊天很舒服。", source:"聊天心法", tag:"核心" },
-    { quote:"倾听比表达重要十倍。说出'我懂你'之前，先证明你真的在认真听。", source:"沟通心理学", tag:"倾听" },
-    { quote:"火象要激情，土象要靠谱，风象要新鲜，水象要深情。四元素的底层需求，就是对号入座的钥匙。", source:"四元素法则", tag:"星座" },
-    { quote:"NT理性者崇拜逻辑，NF理想主义者追求意义，SJ守护者看重责任，SP探险家活在体验。MBTI四组各有频道，别用同一个频率对话。", source:"MBTI四组法则", tag:"MBTI" },
-    { quote:"所有技巧的前提是——你真的在乎她。没有真心，再漂亮的话术都是噪音。", source:"终极心法", tag:"核心" },
-    { quote:"她的星座和MBTI是她的出厂设置，但她的人生经历、价值观、兴趣爱好是她的独特版本。了解共性，更要尊重个性。", source:"个性化原则", tag:"进阶" },
-    { quote:"别让标签定义你眼中的她。星座和MBTI是地图，不是疆域——它们指引你方向，但别用地图替代真实的人。", source:"标签使用守则", tag:"核心" }
+    { quote:"很多女生喜欢聊星座和MBTI，本质上是在用这些工具了解自己、理解他人、寻找社交归属感。", source:"DeepSeek", tag:"本质洞察" },
+    { quote:"不要否定她的信仰——她聊星座和MBTI，不是为了求科学论证，而是在找自我认同和社交连接。", source:"DeepSeek", tag:"核心原则" },
+    { quote:"用这些工具了解她，而不是定义她。知道她是天蝎座，就知道她可能喜欢深度、真诚的交流；知道她是ENFP，就知道她可能热爱自由、喜欢新鲜感。这些信息帮你调整沟通方式，而不是给她贴死标签。", source:"DeepSeek", tag:"核心原则" },
+    { quote:"适度即可——聊星座MBTI是社交工具，不是全部话题。聊完这些，记得回归到她这个人本身——她的生活、她的兴趣、她的故事。", source:"DeepSeek", tag:"核心原则" },
+    { quote:"不说教、不自嗨，把话头抛给她，让她有表达的欲望。", source:"DeepSeek", tag:"话术心法" },
+    { quote:"星座是'天生的底色'（被动属性），而MBTI是'思维和决策的习惯'（主动模式）。两者结合，你就能精准拿捏她的性格基调和思考回路。", source:"DeepSeek", tag:"进阶心法" },
+    { quote:"星座管'她是谁'（用什么态度对她）+ MBTI管'她怎么想'（用什么话题聊）= 无往不利的沟通密码。", source:"DeepSeek", tag:"终极公式" },
+    { quote:"开场白是为了让她打开话匣子。等她开始分享后，忘掉这些套路，真诚地看着她的眼睛，听她到底在说什么。", source:"DeepSeek", tag:"重要提醒" }
   ],
   elementMantras: [
     { icon:"🔥", text:"火象（白羊/狮子/射手）—— 激情与行动是他们的语言。别绕弯子，陪他们一起燃烧！直接、热烈、有冲劲，和他们一起做而不是说。", cls:"fire-mantra" },

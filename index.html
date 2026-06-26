@@ -1567,6 +1567,9 @@ function renderNotes() {
   container.innerHTML = `
     <div class="notes-toolbar">
       <button class="btn btn-primary" id="btnNewNote">＋ 新建笔记</button>
+          <button class="btn" id="btnExport" style="background:var(--accent-soft);color:var(--text)">📤 导出</button>
+          <button class="btn" id="btnImport" style="background:var(--accent-soft);color:var(--text)">📥 导入</button>
+          <input type="file" id="importFile" accept=".json" style="display:none">
     </div>
     <div class="note-form" id="noteForm">
       <input type="text" id="noteTitle" placeholder="笔记标题" maxlength="100">
@@ -1591,6 +1594,9 @@ function renderNotes() {
   document.getElementById('btnNewNote').addEventListener('click', () => showNoteForm());
   document.getElementById('btnCancelNote').addEventListener('click', hideNoteForm);
   document.getElementById('btnSaveNote').addEventListener('click', saveNoteHandler);
+  document.getElementById('btnExport').addEventListener('click', exportNotes);
+  document.getElementById('btnImport').addEventListener('click', () => document.getElementById('importFile').click());
+  document.getElementById('importFile').addEventListener('change', importNotes);
   renderNotesList();
 }
 
@@ -1709,6 +1715,44 @@ function renderNotesList() {
       }
     });
   });
+}
+
+// ==================== EXPORT / IMPORT ====================
+function exportNotes() {
+  const data = JSON.stringify(notes, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'notes-backup.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importNotes(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const imported = JSON.parse(ev.target.result);
+      if (!Array.isArray(imported)) throw new Error('格式错误');
+      const count = imported.length;
+      // 合并策略：导入的笔记追加到现有笔记前面
+      const existingIds = new Set(notes.map(n => n.id));
+      const newNotes = imported.filter(n => !existingIds.has(n.id));
+      notes = [...newNotes, ...notes];
+      saveNotes(notes);
+      renderNotesList();
+      alert('成功导入 ' + count + ' 条笔记（新增 ' + newNotes.length + ' 条）');
+    } catch(err) {
+      alert('导入失败：文件格式不正确');
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = ''; // 重置input，允许重复导入同一文件
 }
 
 // ==================== INIT ====================
